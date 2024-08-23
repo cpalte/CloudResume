@@ -58,6 +58,10 @@ body {
   display: flex;
 }
 
+#counter {
+  color: white;
+}
+
 .nav {
   display: flex;
   flex-direction: column;
