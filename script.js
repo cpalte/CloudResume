@@ -1,19 +1,8 @@
-var n = sessionStorage.getItem("on_load_counter");
-
-if (n === null) {
-  n = 0;
+const counter = document.querySelector("#counter");
+async function updateCounter() {
+    let response = await fetch("https://tx9fy31q72.execute-api.us-east-1.amazonaws.com/testCloudResumeAPI/", {method: 'GET'});
+    let data = await response.json();
+    counter.innerHTML = "Views: " + data
 }
-n++;
 
-console.log(n);
-
-sessionStorage.setItem("on_load_counter", n);
-
-function updateHTML(elmId, value) {
-    var elem = document.getElementById(elmId);
-    if(typeof elem !== 'undefined' && elem !== null) {
-      elem.innerHTML = value;
-    }
-  }
-
-document.getElementById("counter").innerHTML = n;
+updateCounter();
